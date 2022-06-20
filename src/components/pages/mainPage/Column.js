@@ -12,11 +12,12 @@ const Container = styled.form`
     display: flex;
     justify-content: flex-start;
     outline: none;
-    background-color: rgb(222, 222, 219);
-    color: rgb(0, 33, 71);
+    color: red;
     border-radius: 6px;
     font-size: 14px;
+   
   }
+ 
 `;
 const Column = () => {
   const dispatch = useDispatch();

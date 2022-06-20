@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { uiActions } from "../../../store/slices/uiLoginSlice";
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -77,11 +77,8 @@ const SignIn = () => {
 
   const linkRef = useRef();
 
-  const dispatch = useDispatch();
-
   const userData = useSelector((state) => state.cart);
   const [formIsValid, setFormIsValid] = useState(false);
-
   let idUser = 0;
 
   const inputChangelHandler = (e) => {
@@ -102,13 +99,10 @@ const SignIn = () => {
     }
   }, [data]);
 
-
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(uiActions.addUser(data));
     linkRef.current.click();
-
     setData({
       email: "",
       password: "",
@@ -123,7 +117,7 @@ const SignIn = () => {
       ></img>
       <form onSubmit={submitHandler}>
         <div>
-          <h3>Sign in  Trello</h3>
+          <h3>Sign in Trello</h3>
           <div>
             <label htmlFor="email"></label>
             <input
@@ -147,9 +141,7 @@ const SignIn = () => {
             />
           </div>
           <Link ref={linkRef} to="/todo"></Link>
-          <button 
-          disabled={!formIsValid}
-          >Login</button>
+          <button disabled={!formIsValid}>Login</button>
         </div>
       </form>
     </Container>

@@ -17,7 +17,6 @@ const Container = styled.div`
   }
   .addCart {
     cursor: pointer;
-    color: red;
     :hover {
       background-color: rgb(203, 194, 184);
     }
@@ -49,6 +48,8 @@ const Button = styled.button`
   margin-top: 10px;
 `;
 
+let todoId =0;
+
 const TodoHeader = ({ todo }) => {
   const [data, setData] = useState("");
   const [show, setShow] = useState(false);
@@ -56,11 +57,12 @@ const TodoHeader = ({ todo }) => {
   const textAreaChangeHandler = (e) => {
     setData(e.target.value);
   };
-  const addTodoHandler = (e, id) => {
+  const addTodoHandler = ( id) => {
+
     if (data.trim().length > 0) {
       const todoData = {
         item: data,
-        id: new Date(),
+        id: todoId++,
       };
       dispatch(uiColumnActions.addTodo({ todoData, id }));
     }
@@ -72,10 +74,10 @@ const TodoHeader = ({ todo }) => {
         name="items"
         value={data}
         onChange={textAreaChangeHandler}
-        placeholder="todo title"
+        placeholder="click here to enter text"
       ></textarea>
       <div style={{ display: "flex" }}>
-        <Button onClick={(e) => addTodoHandler(e, todo.id)}>Add Task</Button>
+        <Button onClick={() => addTodoHandler( todo.id)}>Add Task</Button>
         <span className="x" onClick={() => setShow(false)}>
           X
         </span>

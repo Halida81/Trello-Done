@@ -9,8 +9,7 @@ const TextStyled = styled.li`
   margin: 10px;
   border-radius: 5px;
   list-style: none;
-
-  color: gray;
+  color: black;
   :hover {
     background-color: rgb(203, 194, 184);
     opacity: 0.8;
@@ -27,7 +26,7 @@ const TodoCard = (props) => {
   return (
     <div>
       {props.todos.map((el) => (
-        <div key={Math.random.toString()}>
+        <div key={el.todo.id}>
           <TextStyled onClick={modalHandler} key={el.todo.id}>
             {el.todo.item}
           </TextStyled>

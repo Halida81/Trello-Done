@@ -50,12 +50,14 @@ const Container = styled.header`
     left: 81.5rem;
     top: 50px;
     width: 13.5%;
-    background-color: red;
+    background-color: white;
+    opacity: 0.7;
     box-shadow: 1px 1px 5px rgb(0, 0, 0, 0.15);
     z-index: 111;
     max-height: 240px;
     height: auto;
     overflow: auto;
+    color: black;
   }
   .autocomplete_item {
     padding: 10px;
@@ -70,12 +72,20 @@ const Container = styled.header`
     outline: none;
     color: rgb(0, 33, 71);
   }
+  .search {
+    font-size: 30px;
+    margin-left: -90px;
+    color: rgb(0, 33, 71);
+  }
 `;
 
 const MainHeader = () => {
   const items = useSelector((state) => state.column.items);
+
   const [searchInput, setSearchInput] = useState("");
   const [isOpen, setIsOpen] = useState(true);
+
+
 
   let filteredItems = items.filter((item) => {
     return item.title.toLowerCase().includes(searchInput.toLowerCase());
@@ -153,13 +163,7 @@ const MainHeader = () => {
               : null}
           </span>
 
-          <AiOutlineSearch
-            style={{
-              fontSize: "30px",
-              marginLeft: "-90px",
-              color: "rgb(0, 33, 71)",
-            }}
-          />
+          <AiOutlineSearch className="search" />
         </ul>
       </nav>
     </Container>

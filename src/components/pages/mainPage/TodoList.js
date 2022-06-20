@@ -24,6 +24,8 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  scroll-behavior: auto;
+  scroll-behavior: smooth;
 `;
 
 export const TodoList = (props) => {
